@@ -1,6 +1,6 @@
 <?php
 
-namespace GGGGino\SonataExtraFields\Form\Type;
+namespace GGGGino\SonataExtraFieldsBundle\Form\Type;
 
 use Sonata\CoreBundle\Form\EventListener\ResizeFormListener;
 use Sonata\CoreBundle\Form\Type\CollectionType;
@@ -70,7 +70,7 @@ class PimpedCollectionType extends CollectionType
      */
     public function getBlockPrefix()
     {
-        return 'custom_collection';
+        return 'pimped_collection';
     }
 
     /**

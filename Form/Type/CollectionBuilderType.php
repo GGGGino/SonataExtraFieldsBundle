@@ -1,8 +1,8 @@
 <?php
 
-namespace GGGGino\SonataExtraFields\Form\Type;
+namespace GGGGino\SonataExtraFieldsBundle\Form\Type;
 
-use GGGGino\SonataExtraFields\Form\EventListener\CollectionBuilderListener;
+use GGGGino\SonataExtraFieldsBundle\Form\EventListener\CollectionBuilderListener;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;

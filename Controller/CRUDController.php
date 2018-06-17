@@ -1,14 +1,26 @@
 <?php
 
-namespace Allyou\ManagementBundle\Controller;
+namespace GGGGino\SonataExtraFieldsBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CRUDController extends Controller
 {
+    /**
+     * @Route("/lucky/number")
+     */
+    public function number()
+    {
+        $number = mt_rand(0, 100);
+
+        return new Response(
+            '<html><body>Lucky number: '.$number.'</body></html>'
+        );
+    }
     /**
      * @Route("/core/append-form-field-element-render", name="sonata_admin_append_form_element_render")
      * @throws NotFoundHttpException

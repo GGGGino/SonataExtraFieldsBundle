@@ -1,6 +1,6 @@
 <?php
 
-namespace GGGGino\SonataExtraFields\Form\EventListener;
+namespace GGGGino\SonataExtraFieldsBundle\Form\EventListener;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

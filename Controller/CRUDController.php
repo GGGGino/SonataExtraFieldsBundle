@@ -2,25 +2,22 @@
 
 namespace GGGGino\SonataExtraFieldsBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use Knp\Menu\Renderer\TwigRenderer;
+use Sonata\AdminBundle\Admin\AdminHelper;
+use Sonata\AdminBundle\Admin\AdminInterface;
+use Symfony\Bridge\Twig\AppVariable;
+use Symfony\Bridge\Twig\Extension\FormExtension;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Twig\Command\DebugCommand;
 
 class CRUDController extends Controller
 {
-    /**
-     * @Route("/lucky/number")
-     */
-    public function number()
-    {
-        $number = mt_rand(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
-    }
     /**
      * @Route("/core/append-form-field-element-render", name="sonata_admin_append_form_element_render")
      * @throws NotFoundHttpException
@@ -128,5 +125,29 @@ class CRUDController extends Controller
         $finalForm->setData($form->getData());
 
         return [null, $finalForm];
+    }
+
+    /**
+     * @return FormRenderer|TwigRenderer
+     */
+    private function getFormRenderer()
+    {
+        // BC for Symfony < 3.2 where this runtime does not exists
+        if (!method_exists(AppVariable::class, 'getToken')) {
+            $extension = $this->twig->getExtension(FormExtension::class);
+            $extension->initRuntime($this->twig);
+
+            return $extension->renderer;
+        }
+
+        // BC for Symfony < 3.4 where runtime should be TwigRenderer
+        if (!method_exists(DebugCommand::class, 'getLoaderPaths')) {
+            $runtime = $this->get('twig')->getRuntime(TwigRenderer::class);
+            $runtime->setEnvironment($this->get('twig'));
+
+            return $runtime;
+        }
+
+        return $this->get('twig')->getRuntime(FormRenderer::class);
     }
 }

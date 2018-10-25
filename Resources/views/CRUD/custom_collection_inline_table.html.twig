@@ -27,28 +27,30 @@ file that was distributed with this source code.
     </script>
 {% endif %}
 <table class="table table-bordered">
-    <thead>
-    <tr>
-        {% for field_name, nested_field in form.children.items.children|first.children %}
-            {% if field_name == '_delete' %}
-                <th>{{ 'action_delete'|trans({}, 'SonataAdminBundle') }}</th>
-            {% else %}
-                <th
-                        {% if nested_field.vars['required'] %}
-                            class="required"
-                        {% endif %}
-                        {% if (nested_field.vars['attr']['hidden'] is defined) and (nested_field.vars['attr']['hidden']) %}
-                            style="display:none;"
-                        {% endif %}
-                >
-                    {{ nested_field.vars.label|trans({}, nested_field.vars['sonata_admin'].admin.translationDomain
-                    |default(nested_field.vars.translation_domain)
-                    ) }}
-                </th>
-            {% endif %}
-        {% endfor %}
-    </tr>
-    </thead>
+    {% if show_table_header %}
+        <thead>
+        <tr>
+            {% for field_name, nested_field in form.children.items.children|first.children %}
+                {% if field_name == '_delete' %}
+                    <th>{{ 'action_delete'|trans({}, 'SonataAdminBundle') }}</th>
+                {% else %}
+                    <th
+                            {% if nested_field.vars['required'] %}
+                                class="required"
+                            {% endif %}
+                            {% if (nested_field.vars['attr']['hidden'] is defined) and (nested_field.vars['attr']['hidden']) %}
+                                style="display:none;"
+                            {% endif %}
+                    >
+                        {{ nested_field.vars.label|trans({}, nested_field.vars['sonata_admin'].admin.translationDomain
+                        |default(nested_field.vars.translation_domain)
+                        ) }}
+                    </th>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        </thead>
+    {% endif %}
     <tbody class="sonata-ba-tbody">
     {% for nested_group_field_name, nested_group_field in form.children.items.children %}
         <tr>

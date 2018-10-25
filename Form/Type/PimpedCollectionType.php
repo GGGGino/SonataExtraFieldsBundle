@@ -25,6 +25,7 @@ class PimpedCollectionType extends CollectionType
         $view->vars['direct_delete'] = $options['direct_delete'];
         $view->vars['direct_delete_confirm'] = $options['direct_delete_confirm'];
         $view->vars['hide_def_tab'] = $options['hide_def_tab'];
+        $view->vars['show_table_header'] = $options['show_table_header'];
 
         if( $options['trash_last'])
             $this->placeFieldLast('_delete', $form);
@@ -61,7 +62,8 @@ class PimpedCollectionType extends CollectionType
             'direct_delete' => false,
             'direct_delete_confirm' => false,
             'trash_last' => false,
-            'hide_def_tab' => false
+            'hide_def_tab' => false,
+            'show_table_header' => true
         ]);
     }
 

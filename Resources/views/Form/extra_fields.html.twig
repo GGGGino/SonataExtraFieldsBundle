@@ -198,11 +198,11 @@
             {% if sonata_admin.edit == 'inline' %}
                 {% if sonata_admin.inline == 'table' %}
                     {% if form.children|length > 0 %}
-                        {% include '@GGGGinoSonataExtraFields/Form/custom_collection_inline_table.html.twig' %}
+                        {% include '@GGGGinoSonataExtraFields/CRUD/custom_collection_inline_table.html.twig' %}
                     {% endif %}
                 {% elseif form.children|length > 0 %}
                     {% set associationAdmin = sonata_admin.field_description.associationadmin %}
-                    {% include '@GGGGinoSonataExtraFields/Form/custom_collection_inline_tabs.html.twig' %}
+                    {% include '@GGGGinoSonataExtraFields/CRUD/custom_collection_inline_tabs.html.twig' %}
                 {% endif %}
             {% else %}
                 {{ form_widget(form) }}

@@ -12,6 +12,13 @@ twig:
         - 'GGGGinoSonataExtraFieldsBundle:Form:extra_fields.html.twig'
 ```
 
+routing.yml
+```yml
+ggggino_extrafields:
+    resource: '@GGGGinoSonataExtraFieldsBundle/Controller/'
+    type: annotation
+```
+
 ### CollectionBuilder Field
 
 With this class you can create collection items depending on a wizard(non mapped )

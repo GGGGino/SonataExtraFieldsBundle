@@ -77,6 +77,7 @@ class CollectionBuilderType extends PimpedCollectionType
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
+            'wizardLabel' => 'Execute',
             'formWizard' => null,
             'formWizardPreSetData' => null,
             'formWizardPreSubmit' => null,

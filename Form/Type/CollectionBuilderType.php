@@ -62,6 +62,8 @@ class CollectionBuilderType extends PimpedCollectionType
     {
         parent::buildView($view, $form, $options);
 
+        $view->vars['wizardLabel'] = $options['wizardLabel'];
+
         /** @var Form $formBuilder */
         //$formBuilder = $options['formBuilder'];
 

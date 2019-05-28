@@ -30,7 +30,7 @@ file that was distributed with this source code.
     {% if show_table_header %}
         <thead>
         <tr>
-            {% for field_name, nested_field in form.children|first.children %}
+            {% for field_name, nested_field in form.children.items.children|first.children %}
                 {% if field_name == '_delete' %}
                     <th>{{ 'action_delete'|trans({}, 'SonataAdminBundle') }}</th>
                 {% else %}
@@ -52,7 +52,7 @@ file that was distributed with this source code.
         </thead>
     {% endif %}
     <tbody class="sonata-ba-tbody">
-    {% for nested_group_field_name, nested_group_field in form.children %}
+    {% for nested_group_field_name, nested_group_field in form.children.items.children %}
         <tr>
             {% for field_name, nested_field in nested_group_field.children %}
                 <td class="

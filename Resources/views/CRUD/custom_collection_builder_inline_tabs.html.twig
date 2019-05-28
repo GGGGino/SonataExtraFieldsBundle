@@ -26,7 +26,7 @@ file that was distributed with this source code.
 {% endif %}
 <div class="sonata-ba-tabs">
     <div class="row">
-        {% for nested_group_field in form.children %}
+        {% for nested_group_field in form.children.items.children %}
             <div class="{{ wrapper_class }}">
                 <div class="nav-tabs-custom">
                     {% if associationAdmin.formgroups|length > 1 and not hide_def_tab %}

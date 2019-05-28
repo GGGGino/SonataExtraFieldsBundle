@@ -59,7 +59,7 @@ protected function configureFormFields(FormMapper $formMapper)
 ```
 
 RealWorldExampleAdmin.php
-```
+```php
 $formMapper->add('fasce', CollectionBuilderType::class, array(
     'by_reference' => false,
     'wrapper_class' => 'col-xs-4',
